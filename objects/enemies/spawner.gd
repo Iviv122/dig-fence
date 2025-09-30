@@ -6,8 +6,7 @@ class_name Spawner
 @export var line : Line2D 
 
 @export var enemy : PackedScene
-
-var wave_money : int
+var wave = 0
 
 func _ready():
 	field.new_line.connect(start_wave)

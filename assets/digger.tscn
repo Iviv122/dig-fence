@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cvk4nkfv3ku6e"]
 
 [ext_resource type="Texture2D" uid="uid://cq1daemcxbjvx" path="res://raw_assets/digger.png" id="1_5xvsy"]
-[ext_resource type="Script" uid="uid://b7qibbs2s2f77" path="res://objects/digger.gd" id="2_orynh"]
+[ext_resource type="Script" uid="uid://b7qibbs2s2f77" path="res://objects/field/digger.gd" id="2_orynh"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5xvsy"]
 bg_color = Color(0.8901961, 0, 0, 1)
