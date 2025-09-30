@@ -15,29 +15,14 @@ func init(dist : float, dam : float,s : float,enemy : Enemy):
 	speed = s
 	e = enemy
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
+	if e == null:
+		queue_free()
+		return;
 	var l = (e.global_position-global_position).length()
 	if l <= 0.5:
 		e.deal_damage(damage)		
 		queue_free()
 	else:
-		global_position.x=move_toward(global_position.x,e.global_position.x,speed)
-		global_position.y=move_toward(global_position.y,e.global_position.y,speed)
-
-func collide() ->void:
-	var space_state = get_world_2d().direct_space_state
-
-	var circle_shape = CircleShape2D.new()
-	circle_shape.radius = bullet_radius 
-
-	var transform = Transform2D()
-	transform.origin = global_position 
-
-	var query = PhysicsShapeQueryParameters2D.new()
-	query.shape = circle_shape
-	query.transform = transform
-	query.collide_with_areas = true 
-
-	var result = space_state.intersect_shape(query) 
-
-	var n = result.size()
+		global_position = Vector2(move_toward(global_position.x,e.global_position.x,speed),move_toward(global_position.y,e.global_position.y,speed))
+		

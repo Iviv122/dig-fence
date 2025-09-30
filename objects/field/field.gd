@@ -20,9 +20,16 @@ func _ready():
 	add_line()
 	continue_tiles()
 
-# for towers
-func place():
-	pass
+func place(x,y,tower:PackedScene):
+	if matrix[y * width + x] is PathTile:
+		return;
+
+	matrix[y * width + x].queue_free()
+
+	var t : Tower = tower.instantiate()
+	t.global_position = global_position + Vector2(x * tile_width, y * tile_width)
+	matrix[y*width+x] = t
+	add_child(t)
 
 func place_path(x, y):
 	if matrix[y * width + x] is ContinueTile:
