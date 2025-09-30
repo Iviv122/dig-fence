@@ -1,12 +1,20 @@
-[gd_scene load_steps=8 format=3 uid="uid://bxg8526utvvt3"]
+[gd_scene load_steps=13 format=3 uid="uid://bxg8526utvvt3"]
 
 [ext_resource type="Script" uid="uid://bvf884qvmlsuh" path="res://objects/field.gd" id="1_n4psk"]
 [ext_resource type="Script" uid="uid://0logelvjgqmj" path="res://objects/camera.gd" id="3_oe8ih"]
 [ext_resource type="PackedScene" uid="uid://dxxpy8hl7g5wa" path="res://assets/portal.tscn" id="4_fbudy"]
 [ext_resource type="Texture2D" uid="uid://bk120gxvl3biy" path="res://raw_assets/can_place.png" id="4_smepj"]
 [ext_resource type="Script" uid="uid://qsx62i685pn3" path="res://objects/cursor.gd" id="4_xuee5"]
-[ext_resource type="Texture2D" uid="uid://cq1daemcxbjvx" path="res://raw_assets/digger.png" id="6_cbffv"]
-[ext_resource type="Script" uid="uid://b7qibbs2s2f77" path="res://objects/digger.gd" id="7_fbudy"]
+[ext_resource type="Texture2D" uid="uid://bun1w3gnq44u1" path="res://raw_assets/dashedline.png" id="6_0m7cd"]
+[ext_resource type="Shader" uid="uid://bwoh4r05buk4m" path="res://shaders/panning.gdshader" id="6_2ihbs"]
+[ext_resource type="PackedScene" uid="uid://cvk4nkfv3ku6e" path="res://assets/digger.tscn" id="8_2ihbs"]
+[ext_resource type="Script" uid="uid://dbi4osw6bqr44" path="res://objects/spawner.gd" id="10_1qy1k"]
+[ext_resource type="PackedScene" uid="uid://b7cvsd313woo5" path="res://assets/enemies/enemy.tscn" id="10_3n40r"]
+[ext_resource type="PackedScene" uid="uid://du0ffo05f6asl" path="res://assets/ui.tscn" id="11_3n40r"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0m7cd"]
+shader = ExtResource("6_2ihbs")
+shader_parameter/speed = Vector2(1, 0)
 
 [node name="Node2D" type="Node2D"]
 
@@ -30,50 +38,20 @@ metadata/_custom_type_script = "uid://qsx62i685pn3"
 
 [node name="Line2D" type="Line2D" parent="."]
 z_index = 1
+texture_repeat = 2
+material = SubResource("ShaderMaterial_0m7cd")
+texture = ExtResource("6_0m7cd")
+texture_mode = 1
 
-[node name="Digger" type="Sprite2D" parent="." node_paths=PackedStringArray("field", "left_button", "right_button", "button_button", "path_line")]
-self_modulate = Color(1, 1, 1, 0)
-texture = ExtResource("6_cbffv")
-script = ExtResource("7_fbudy")
+[node name="Digger" parent="." node_paths=PackedStringArray("field", "path_line") instance=ExtResource("8_2ihbs")]
 field = NodePath("../Field")
-left_button = NodePath("Button3")
-right_button = NodePath("Button2")
-button_button = NodePath("Button")
 path_line = NodePath("../Line2D")
-metadata/_custom_type_script = "uid://b7qibbs2s2f77"
 
-[node name="Button" type="Button" parent="Digger"]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -44.0
-offset_top = -44.0
-offset_right = -20.0
-offset_bottom = -20.0
-grow_horizontal = 2
-grow_vertical = 0
+[node name="Spawner" type="Node" parent="." node_paths=PackedStringArray("digger", "field", "line")]
+script = ExtResource("10_1qy1k")
+digger = NodePath("../Digger")
+field = NodePath("../Field")
+line = NodePath("../Line2D")
+enemy = ExtResource("10_3n40r")
 
-[node name="Button2" type="Button" parent="Digger"]
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -44.0
-offset_top = -44.0
-offset_right = -20.0
-offset_bottom = -20.0
-grow_horizontal = 0
-grow_vertical = 2
-
-[node name="Button3" type="Button" parent="Digger"]
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = -44.0
-offset_top = -44.0
-offset_right = -20.0
-offset_bottom = -20.0
-grow_vertical = 2
+[node name="Control" parent="." instance=ExtResource("11_3n40r")]

@@ -14,10 +14,14 @@ config/name="DigFence"
 run/main_scene="uid://bxg8526utvvt3"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 
+[autoload]
+
+PlayerInstance="*res://assets/player.tscn"
+
 [display]
 
-window/size/viewport_width=800
-window/size/viewport_height=800
+window/size/viewport_width=600
+window/size/viewport_height=600
 window/size/resizable=false
 
 [editor_plugins]

@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://du0ffo05f6asl"]
+
+[ext_resource type="Script" uid="uid://cknjfl8ao06mq" path="res://objects/player/money_display.gd" id="1_etwi0"]
+[ext_resource type="Script" uid="uid://ccau7boslisuf" path="res://objects/player/health_display.gd" id="2_ohefe"]
+
+[node name="Control" type="CanvasLayer"]
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+script = ExtResource("1_etwi0")
+metadata/_custom_type_script = "uid://cknjfl8ao06mq"
+
+[node name="Label2" type="Label" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 23.0
+grow_horizontal = 0
+script = ExtResource("2_ohefe")
+metadata/_custom_type_script = "uid://ccau7boslisuf"

@@ -1,0 +1,55 @@
+[gd_scene load_steps=4 format=3 uid="uid://cvk4nkfv3ku6e"]
+
+[ext_resource type="Texture2D" uid="uid://cq1daemcxbjvx" path="res://raw_assets/digger.png" id="1_5xvsy"]
+[ext_resource type="Script" uid="uid://b7qibbs2s2f77" path="res://objects/digger.gd" id="2_orynh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5xvsy"]
+bg_color = Color(0.8901961, 0, 0, 1)
+
+[node name="Digger" type="Sprite2D" node_paths=PackedStringArray("left_button", "right_button", "button_button")]
+self_modulate = Color(1, 1, 1, 0)
+texture = ExtResource("1_5xvsy")
+script = ExtResource("2_orynh")
+left_button = NodePath("Button3")
+right_button = NodePath("Button2")
+button_button = NodePath("Button")
+metadata/_custom_type_script = "uid://b7qibbs2s2f77"
+
+[node name="Button" type="Button" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -44.0
+offset_top = -44.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_5xvsy")
+
+[node name="Button2" type="Button" parent="."]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -44.0
+offset_top = -44.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_5xvsy")
+
+[node name="Button3" type="Button" parent="."]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -44.0
+offset_top = -44.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_5xvsy")

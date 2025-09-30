@@ -1,11 +1,28 @@
-extends Node
+extends Area2D 
+class_name Enemy 
 
+@export var line : Line2D
+@export var speed : float
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+var index
 
+func set_line(l : Line2D):
+	line = l
+	index = line.points.size()-1
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+func die():
+	queue_free()
+
+func suicide():
+	PlayerInstance.substruct_health(1)
+	die()
+
 func _process(delta: float) -> void:
-	pass
+	var len = (global_position-line.points[index-1]).length()
+	
+	if len > 0.1:
+		global_position += (line.points[index-1]-global_position).normalized()*speed*delta
+	else:
+		index-=1
+		if index <= 0:
+			suicide()

@@ -9,9 +9,9 @@ var depth: int = 0
 var tile_width: int = 64
 var tile_height: int = 64
 var matrix: Array[Tile] = []
-
-
 var towers = {}
+
+signal new_line()
 
 func _ready():
 	add_line()
@@ -19,10 +19,6 @@ func _ready():
 	add_line()
 	add_line()
 	continue_tiles()
-	print("total tiles:", matrix.size())
-
-	
-
 
 # for towers
 func place():
@@ -32,6 +28,7 @@ func place_path(x, y):
 	if matrix[y * width + x] is ContinueTile:
 		replace_add_line()
 		add_continue_tiles()
+		new_line.emit()
 	
 	matrix[y * width + x].queue_free()
 	
@@ -54,7 +51,6 @@ func add_line():
 		
 		t.global_position = global_position + Vector2(x * tile_width, depth * tile_height)
 
-		print(x ," ", depth)
 		matrix.append(t)
 		add_child(t)
 
