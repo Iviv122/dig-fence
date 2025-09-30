@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dcp87qsxy1ts3"]
+[gd_scene load_steps=4 format=3 uid="uid://dcp87qsxy1ts3"]
 
 [ext_resource type="Texture2D" uid="uid://ybypo4beifcd" path="res://raw_assets/turret.png" id="1_ne8n1"]
 [ext_resource type="Script" uid="uid://ccnfi50gepy4e" path="res://objects/field/tower.gd" id="2_n3ms4"]
 [ext_resource type="PackedScene" uid="uid://dcp57wmggbabg" path="res://assets/projectiles/simple_bullet.tscn" id="3_te8l0"]
-[ext_resource type="Texture2D" uid="uid://cnckneiyj5i5b" path="res://raw_assets/tile1.png" id="4_n3ms4"]
 
 [node name="Tower" type="Sprite2D"]
 texture = ExtResource("1_ne8n1")
@@ -12,7 +11,3 @@ radius = 128
 attackspeed = 2.0
 projectile = ExtResource("3_te8l0")
 metadata/_custom_type_script = "uid://ccnfi50gepy4e"
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-z_index = -1
-texture = ExtResource("4_n3ms4")

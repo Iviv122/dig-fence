@@ -6,7 +6,9 @@ class_name Spawner
 @export var line : Line2D 
 
 @export var enemy : PackedScene
+
 var wave = 0
+var wave_material = 0
 
 func _ready():
 	field.new_line.connect(start_wave)
@@ -16,16 +18,24 @@ func stop_wave():
 
 func start_wave():
 	digger.hide()
+	wave_material = (wave+3)*(wave+3)
 	await  get_tree().process_frame
 	spawn()
 
 func spawn():
-	var n = line.points.size()
-	
-	var e : Enemy = enemy.instantiate()
+	if wave_material > 0:
+		var n = line.points.size()
+		
+		var e : Enemy = enemy.instantiate()
 
-	e.set_line(line)
-	var p = line.points[n-1]
+		e.set_line(line)
+		var p = line.points[n-1]
 
-	e.global_position = p
-	add_child(e)
+		e.global_position = p
+		add_child(e)
+		await get_tree().create_timer(0.1).timeout
+		spawn()
+		wave_material-=1
+
+	else:
+		stop_wave()

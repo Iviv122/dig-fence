@@ -1,7 +1,6 @@
-[gd_scene load_steps=21 format=3 uid="uid://bxg8526utvvt3"]
+[gd_scene load_steps=20 format=3 uid="uid://bxg8526utvvt3"]
 
 [ext_resource type="Script" uid="uid://bvf884qvmlsuh" path="res://objects/field/field.gd" id="1_n4psk"]
-[ext_resource type="Script" path="res://objects/misc/follow.gd" id="2_eod45"]
 [ext_resource type="Script" uid="uid://0logelvjgqmj" path="res://objects/camera.gd" id="3_oe8ih"]
 [ext_resource type="PackedScene" uid="uid://dxxpy8hl7g5wa" path="res://assets/portal.tscn" id="4_fbudy"]
 [ext_resource type="Texture2D" uid="uid://bk120gxvl3biy" path="res://raw_assets/can_place.png" id="4_smepj"]
@@ -109,7 +108,6 @@ z_index = -999
 y_sort_enabled = true
 material = SubResource("ShaderMaterial_eod45")
 texture = SubResource("GradientTexture2D_tyrfw")
-script = ExtResource("2_eod45")
 
 [node name="BackgroundMajor2" type="Sprite2D" parent="game/camera"]
 z_index = -999
@@ -117,7 +115,6 @@ y_sort_enabled = true
 material = SubResource("ShaderMaterial_nwk8b")
 rotation = 0.7853982
 texture = SubResource("GradientTexture2D_tyrfw")
-script = ExtResource("2_eod45")
 
 [node name="Cursor" type="Sprite2D" parent="game" node_paths=PackedStringArray("field", "digger")]
 texture = ExtResource("4_smepj")

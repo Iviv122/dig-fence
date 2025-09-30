@@ -23,12 +23,11 @@ func _ready():
 func place(x,y,tower:PackedScene):
 	if matrix[y * width + x] is PathTile:
 		return;
-
-	matrix[y * width + x].queue_free()
-
+	
 	var t : Tower = tower.instantiate()
 	t.global_position = global_position + Vector2(x * tile_width, y * tile_width)
-	matrix[y*width+x] = t
+	towers[Vector2(x,y)] = t 
+	
 	add_child(t)
 
 func place_path(x, y):
@@ -38,7 +37,11 @@ func place_path(x, y):
 		new_line.emit()
 	
 	matrix[y * width + x].queue_free()
-	
+
+	if Vector2(x,y) in towers:
+		towers[Vector2(x,y)].queue_free()
+		towers.erase(Vector2(x,y))
+
 	# add path tile
 	var t = PathTile.new()
 		
