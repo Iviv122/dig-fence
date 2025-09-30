@@ -3,6 +3,7 @@ class_name Enemy
 
 @export var line : Line2D
 @export var speed : float
+@export var health : float
 
 var index
 
@@ -17,10 +18,15 @@ func suicide():
 	PlayerInstance.substruct_health(1)
 	die()
 
+func deal_damage(a):
+	health -=a
+	if health <= 0:
+		die()
+
 func _process(delta: float) -> void:
-	var len = (global_position-line.points[index-1]).length()
+	var l = (global_position-line.points[index-1]).length()
 	
-	if len > 0.1:
+	if l > 0.1:
 		global_position += (line.points[index-1]-global_position).normalized()*speed*delta
 	else:
 		index-=1

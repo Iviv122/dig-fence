@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dcp57wmggbabg"]
+
+[ext_resource type="Texture2D" uid="uid://vffchh7xhxx" path="res://raw_assets/enemy.png" id="1_sgrsm"]
+[ext_resource type="Script" uid="uid://c1phhuekf5k4r" path="res://objects/towers/simple_bullet.gd" id="1_vcngw"]
+
+[node name="Node2D" type="Sprite2D"]
+texture = ExtResource("1_sgrsm")
+script = ExtResource("1_vcngw")
+metadata/_custom_type_script = "uid://c1phhuekf5k4r"

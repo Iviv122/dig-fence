@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bxg8526utvvt3"]
+[gd_scene load_steps=16 format=3 uid="uid://bxg8526utvvt3"]
 
 [ext_resource type="Script" uid="uid://bvf884qvmlsuh" path="res://objects/field/field.gd" id="1_n4psk"]
 [ext_resource type="Script" uid="uid://0logelvjgqmj" path="res://objects/camera.gd" id="3_oe8ih"]
@@ -11,6 +11,9 @@
 [ext_resource type="Script" uid="uid://dbi4osw6bqr44" path="res://objects/enemies/spawner.gd" id="10_1qy1k"]
 [ext_resource type="PackedScene" uid="uid://b7cvsd313woo5" path="res://assets/enemies/enemy.tscn" id="10_3n40r"]
 [ext_resource type="PackedScene" uid="uid://du0ffo05f6asl" path="res://assets/ui.tscn" id="11_3n40r"]
+[ext_resource type="Script" uid="uid://ccnfi50gepy4e" path="res://objects/field/tower.gd" id="12_45aep"]
+[ext_resource type="Texture2D" uid="uid://ybypo4beifcd" path="res://raw_assets/turret.png" id="12_tyrfw"]
+[ext_resource type="PackedScene" uid="uid://dcp57wmggbabg" path="res://assets/projectiles/simple_bullet.tscn" id="14_eod45"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0m7cd"]
 shader = ExtResource("6_2ihbs")
@@ -55,3 +58,12 @@ line = NodePath("../Line2D")
 enemy = ExtResource("10_3n40r")
 
 [node name="Control" parent="." instance=ExtResource("11_3n40r")]
+
+[node name="Tower" type="Sprite2D" parent="."]
+position = Vector2(200, 238)
+texture = ExtResource("12_tyrfw")
+script = ExtResource("12_45aep")
+radius = 128
+attackspeed = 2.0
+projectile = ExtResource("14_eod45")
+metadata/_custom_type_script = "uid://ccnfi50gepy4e"
