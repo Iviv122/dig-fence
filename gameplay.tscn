@@ -1,24 +1,30 @@
 [gd_scene load_steps=6 format=3 uid="uid://bxg8526utvvt3"]
 
 [ext_resource type="Script" uid="uid://bvf884qvmlsuh" path="res://objects/field.gd" id="1_n4psk"]
-[ext_resource type="Resource" uid="uid://nuksda3p5fy5" path="res://assets/empty_tile.res" id="2_ej4tk"]
 [ext_resource type="Script" uid="uid://0logelvjgqmj" path="res://objects/camera.gd" id="3_oe8ih"]
+[ext_resource type="PackedScene" uid="uid://dxxpy8hl7g5wa" path="res://assets/portal.tscn" id="4_fbudy"]
 [ext_resource type="Texture2D" uid="uid://bk120gxvl3biy" path="res://raw_assets/can_place.png" id="4_smepj"]
 [ext_resource type="Script" uid="uid://qsx62i685pn3" path="res://objects/cursor.gd" id="4_xuee5"]
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Field" type="Node2D" parent="."]
+[node name="Field" type="Node2D" parent="." node_paths=PackedStringArray("path_line")]
 script = ExtResource("1_n4psk")
-empty_tile = ExtResource("2_ej4tk")
+entry_portal = ExtResource("4_fbudy")
+path_line = NodePath("Line2D")
 metadata/_custom_type_script = "uid://bvf884qvmlsuh"
 
+[node name="Line2D" type="Line2D" parent="Field"]
+points = PackedVector2Array(0, 0)
+
 [node name="camera" type="Camera2D" parent="."]
+offset = Vector2(160, 0)
 script = ExtResource("3_oe8ih")
 Speed = 400.0
 metadata/_custom_type_script = "uid://0logelvjgqmj"
 
-[node name="Cursor" type="Sprite2D" parent="."]
+[node name="Cursor" type="Sprite2D" parent="." node_paths=PackedStringArray("field")]
 texture = ExtResource("4_smepj")
 script = ExtResource("4_xuee5")
+field = NodePath("../Field")
 metadata/_custom_type_script = "uid://qsx62i685pn3"

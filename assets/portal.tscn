@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://dxxpy8hl7g5wa"]
+
+[ext_resource type="Shader" uid="uid://bmhgx6nb38oyg" path="res://shaders/portal.gdshader" id="1_vqwsc"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6lhcj"]
+shader = ExtResource("1_vqwsc")
+shader_parameter/color = Color(1, 1, 0, 1)
+shader_parameter/rays = 1.0
+shader_parameter/speed = 1.37999996915424
+shader_parameter/fade = 0.0
+shader_parameter/thickness = 0.0
+
+[sub_resource type="Gradient" id="Gradient_27iqt"]
+offsets = PackedFloat32Array(0.36666667, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_vqwsc"]
+gradient = SubResource("Gradient_27iqt")
+
+[node name="Portal" type="Sprite2D"]
+material = SubResource("ShaderMaterial_6lhcj")
+texture = SubResource("GradientTexture2D_vqwsc")
