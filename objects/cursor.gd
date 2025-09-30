@@ -9,10 +9,6 @@ var X : int = 1
 var Y : int = 1
 
 func _input(event):
-	# Mouse in viewport coordinates.
-	if event.is_action_pressed("click"):
-		field.dig(X,Y)
-
 	if event is InputEventMouseMotion:
 		var pos = get_global_mouse_position()
 		X = (pos.x + tile_size/2) / tile_size 

@@ -1,26 +1,25 @@
-[gd_scene load_steps=6 format=3 uid="uid://bxg8526utvvt3"]
+[gd_scene load_steps=8 format=3 uid="uid://bxg8526utvvt3"]
 
 [ext_resource type="Script" uid="uid://bvf884qvmlsuh" path="res://objects/field.gd" id="1_n4psk"]
 [ext_resource type="Script" uid="uid://0logelvjgqmj" path="res://objects/camera.gd" id="3_oe8ih"]
 [ext_resource type="PackedScene" uid="uid://dxxpy8hl7g5wa" path="res://assets/portal.tscn" id="4_fbudy"]
 [ext_resource type="Texture2D" uid="uid://bk120gxvl3biy" path="res://raw_assets/can_place.png" id="4_smepj"]
 [ext_resource type="Script" uid="uid://qsx62i685pn3" path="res://objects/cursor.gd" id="4_xuee5"]
+[ext_resource type="Texture2D" uid="uid://cq1daemcxbjvx" path="res://raw_assets/digger.png" id="6_cbffv"]
+[ext_resource type="Script" uid="uid://b7qibbs2s2f77" path="res://objects/digger.gd" id="7_fbudy"]
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Field" type="Node2D" parent="." node_paths=PackedStringArray("path_line")]
+[node name="Field" type="Node2D" parent="."]
 script = ExtResource("1_n4psk")
 entry_portal = ExtResource("4_fbudy")
-path_line = NodePath("Line2D")
 metadata/_custom_type_script = "uid://bvf884qvmlsuh"
-
-[node name="Line2D" type="Line2D" parent="Field"]
-z_index = 1
 
 [node name="camera" type="Camera2D" parent="."]
 offset = Vector2(160, 0)
 script = ExtResource("3_oe8ih")
 Speed = 400.0
+MaxZoom = 2
 metadata/_custom_type_script = "uid://0logelvjgqmj"
 
 [node name="Cursor" type="Sprite2D" parent="." node_paths=PackedStringArray("field")]
@@ -28,3 +27,53 @@ texture = ExtResource("4_smepj")
 script = ExtResource("4_xuee5")
 field = NodePath("../Field")
 metadata/_custom_type_script = "uid://qsx62i685pn3"
+
+[node name="Line2D" type="Line2D" parent="."]
+z_index = 1
+
+[node name="Digger" type="Sprite2D" parent="." node_paths=PackedStringArray("field", "left_button", "right_button", "button_button", "path_line")]
+self_modulate = Color(1, 1, 1, 0)
+texture = ExtResource("6_cbffv")
+script = ExtResource("7_fbudy")
+field = NodePath("../Field")
+left_button = NodePath("Button3")
+right_button = NodePath("Button2")
+button_button = NodePath("Button")
+path_line = NodePath("../Line2D")
+metadata/_custom_type_script = "uid://b7qibbs2s2f77"
+
+[node name="Button" type="Button" parent="Digger"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -44.0
+offset_top = -44.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Button2" type="Button" parent="Digger"]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -44.0
+offset_top = -44.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Button3" type="Button" parent="Digger"]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -44.0
+offset_top = -44.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_vertical = 2
