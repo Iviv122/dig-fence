@@ -1,5 +1,5 @@
 extends Tile 
-class_name Tower
+class_name Tower 
 
 @export var price : int = 100
 @export var radius : int = 5
@@ -9,7 +9,29 @@ class_name Tower
 
 @export var projectile : PackedScene #not necessary
 
+var X :int
+var Y :int
+var field : Field
+
+var summed_price = price
 var reload_time = 0 
+
+signal sold(v : Vector2)
+
+func sell() ->void:
+	sold.emit(Vector2(X,Y))
+	PlayerInstance.money += summed_price
+
+func upgrade()->void:
+
+	summed_price += price*1.5
+	PlayerInstance.substruct_money(price*1.5)
+
+	price*=1.5
+	radius*=1.5
+	attackspeed*=1.5
+	damage*=1.5
+
 
 func shoot(target : Enemy)->void:
 	if reload_time <= 0:

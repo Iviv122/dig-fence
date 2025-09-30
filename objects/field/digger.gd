@@ -37,6 +37,7 @@ func _ready():
 	left_button.pressed.connect(func(): dig(DirType.LEFT))
 	right_button.pressed.connect(func(): dig(DirType.RIGHT))
 	button_button.pressed.connect(func(): dig(DirType.DOWN))
+	field.update.connect(hide_button)
 
 func show_buttons():
 	left_button.show()
@@ -51,6 +52,12 @@ func hide_button():
 	if x+1 > field.width-1:
 		right_button.hide()
 
+	if Vector2(x-1,y) in field.towers and left_button.visible:
+		left_button.hide()
+	if Vector2(x,y+1) in field.towers and button_button.visible:
+		button_button.hide()
+	if Vector2(x+1,y) in field.towers and right_button.visible:
+		right_button.hide()
 	if field.matrix[y * field.width + x-1] is PathTile and left_button.visible:
 		left_button.hide()
 	if field.matrix[y * field.width + x+1] is PathTile and right_button.visible:

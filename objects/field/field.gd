@@ -12,6 +12,7 @@ var matrix: Array[Tile] = []
 var towers = {}
 
 signal new_line()
+signal update()
 
 func _ready():
 	add_line()
@@ -20,15 +21,30 @@ func _ready():
 	add_line()
 	continue_tiles()
 
+func remove_tower(v : Vector2):
+	if v in towers: 
+		var t = towers[v] 
+		towers.erase(v)
+		update.emit()
+		t.queue_free()
+
 func place(x,y,tower:PackedScene):
 	if matrix[y * width + x] is PathTile:
 		return;
 	
 	var t : Tower = tower.instantiate()
 	t.global_position = global_position + Vector2(x * tile_width, y * tile_width)
+	t.X = x
+	t.Y = y
 	towers[Vector2(x,y)] = t 
-	
+
+	t.sold.connect(
+		func(v):
+			remove_tower(v)
+	)
+
 	add_child(t)
+	update.emit()
 
 func place_path(x, y):
 	if matrix[y * width + x] is ContinueTile:
@@ -48,11 +64,13 @@ func place_path(x, y):
 	t.global_position = global_position + Vector2(x * tile_width, y * tile_width)
 	matrix[y * width + x] = t
 	add_child(t)
+	update.emit()
 
 func place_portal(x):
 	var portal: Sprite2D = entry_portal.instantiate()
 	portal.global_position = matrix[x].global_position
 	add_child(portal)
+	update.emit()
 
 # init pos is {0;0} so i need to offset it a bit
 func add_line():
@@ -75,6 +93,7 @@ func continue_tiles():
 		matrix.append(t)
 		add_child(t)
 	depth += 1
+	update.emit()
 
 func replace_add_line():
 	var d = depth-1
@@ -88,6 +107,7 @@ func replace_add_line():
 		t.global_position = global_position + Vector2(x * tile_width, d * tile_height)
 		matrix[d*width+x] = t
 		add_child(t)
+	update.emit()
 
 func add_continue_tiles():
 	for i in range(0, width):
@@ -98,3 +118,4 @@ func add_continue_tiles():
 		matrix.append(t)
 		add_child(t)
 	depth += 1
+	update.emit()

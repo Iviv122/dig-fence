@@ -2,6 +2,8 @@ extends Sprite2D
 class_name Cursor
 
 @export var selection_circle: PackedScene
+@export var upgrade_circle: PackedScene
+
 @export var tile_size : int = 64
 @export var field : Field 
 @export var digger : Digger
@@ -9,17 +11,37 @@ class_name Cursor
 var X : int = 1
 var Y : int = 1
 
-var circle : SelectionCircle
+var circle 
 
 func _unhandled_input(event):
 	if event.is_action_pressed("click"):
 		if X!=-1 and Y!=-1: 
 			var tile =  field.matrix[X+field.width*Y]
-			if  tile is not PathTile and tile is not ContinueTile and tile is not Tower:
-				
-				if circle!=null:
-					circle.queue_free()
+			
+			if circle!=null:
+				circle.free()
+				circle = null
 
+			if Vector2(X,Y) in field.towers:
+				if circle != null:
+					circle.free()
+					circle = null
+				circle = upgrade_circle.instantiate()
+
+				circle.global_position = Vector2(X*tile_size,Y*tile_size)
+				circle.X = X
+				circle.Y = Y
+				circle.field = field
+				circle.set_digger(digger)
+				
+				get_tree().root.add_child(circle)
+
+
+			elif  tile is not PathTile and tile is not ContinueTile and !(Vector2(X,Y) in field.towers):
+
+				if circle != null:
+					circle.free()
+					circle = null
 				circle = selection_circle.instantiate()
 
 				circle.global_position = Vector2(X*tile_size,Y*tile_size)
@@ -29,8 +51,7 @@ func _unhandled_input(event):
 				circle.set_digger(digger)
 
 				get_tree().root.add_child(circle)
-			if tile is Tower:
-				pass
+
 		else:
 			if circle!=null:
 				circle.queue_free()
