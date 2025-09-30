@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://qsx62i685pn3" path="res://objects/cursor.gd" id="4_xuee5"]
 [ext_resource type="Texture2D" uid="uid://bun1w3gnq44u1" path="res://raw_assets/dashedline.png" id="6_0m7cd"]
 [ext_resource type="Shader" uid="uid://bwoh4r05buk4m" path="res://shaders/panning.gdshader" id="6_2ihbs"]
-[ext_resource type="PackedScene" uid="uid://grdmqa707a7b" path="res://assets/selection_circle.tscn" id="6_45aep"]
+[ext_resource type="PackedScene" uid="uid://grdmqa707a7b" path="res://assets/circles/selection_circle.tscn" id="6_45aep"]
 [ext_resource type="PackedScene" uid="uid://cvk4nkfv3ku6e" path="res://assets/digger.tscn" id="8_2ihbs"]
 [ext_resource type="Script" uid="uid://dbi4osw6bqr44" path="res://objects/enemies/spawner.gd" id="10_1qy1k"]
 [ext_resource type="PackedScene" uid="uid://b7cvsd313woo5" path="res://assets/enemies/enemy.tscn" id="10_3n40r"]
@@ -19,41 +19,46 @@ shader_parameter/speed = Vector2(1, 0)
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Field" type="Node2D" parent="."]
+[node name="Control" parent="." instance=ExtResource("11_3n40r")]
+
+[node name="Sprite2D" type="Sprite2D" parent="Control"]
+
+[node name="game" type="Node2D" parent="."]
+
+[node name="Field" type="Node2D" parent="game"]
 script = ExtResource("1_n4psk")
 entry_portal = ExtResource("4_fbudy")
 metadata/_custom_type_script = "uid://bvf884qvmlsuh"
 
-[node name="camera" type="Camera2D" parent="."]
+[node name="camera" type="Camera2D" parent="game"]
 offset = Vector2(160, 0)
 script = ExtResource("3_oe8ih")
 Speed = 400.0
 MaxZoom = 2
 metadata/_custom_type_script = "uid://0logelvjgqmj"
 
-[node name="Cursor" type="Sprite2D" parent="." node_paths=PackedStringArray("field")]
+[node name="Cursor" type="Sprite2D" parent="game" node_paths=PackedStringArray("field", "digger")]
 texture = ExtResource("4_smepj")
 script = ExtResource("4_xuee5")
 selection_circle = ExtResource("6_45aep")
 field = NodePath("../Field")
+digger = NodePath("../Digger")
 metadata/_custom_type_script = "uid://qsx62i685pn3"
 
-[node name="Line2D" type="Line2D" parent="."]
+[node name="Line2D" type="Line2D" parent="game"]
 z_index = 1
 texture_repeat = 2
 material = SubResource("ShaderMaterial_0m7cd")
 texture = ExtResource("6_0m7cd")
 texture_mode = 1
 
-[node name="Digger" parent="." node_paths=PackedStringArray("field", "path_line") instance=ExtResource("8_2ihbs")]
+[node name="Digger" parent="game" node_paths=PackedStringArray("field", "path_line") instance=ExtResource("8_2ihbs")]
 field = NodePath("../Field")
 path_line = NodePath("../Line2D")
 
-[node name="Spawner" type="Node" parent="." node_paths=PackedStringArray("digger", "field", "line")]
+[node name="Spawner" type="Node" parent="game" node_paths=PackedStringArray("digger", "field", "line")]
 script = ExtResource("10_1qy1k")
 digger = NodePath("../Digger")
 field = NodePath("../Field")
 line = NodePath("../Line2D")
 enemy = ExtResource("10_3n40r")
-
-[node name="Control" parent="." instance=ExtResource("11_3n40r")]

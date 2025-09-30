@@ -7,7 +7,6 @@ class_name Digger
 @export var right_button : Button
 @export var button_button : Button
 
-
 @export var path_line: Line2D
 
 var x : int
@@ -24,6 +23,8 @@ enum DirType{
 	RIGHT,
 	DOWN,
 }
+
+signal digged()
 
 func _ready():
 	x = ceil(field.width / 2)
@@ -64,6 +65,7 @@ func dig(dir : DirType):
 
 
 	field.place_path(x, y)
+	digged.emit()
 	hide_button()
 	global_position = Vector2(x*field.tile_width,y*field.tile_height)
 

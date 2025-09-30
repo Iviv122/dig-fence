@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://p58ceqnvmhj8" path="res://raw_assets/selection_circle.png" id="1_lj7je"]
 [ext_resource type="Texture2D" uid="uid://ybypo4beifcd" path="res://raw_assets/turret.png" id="2_0ti60"]
-[ext_resource type="Script" uid="uid://cnt0ttcupry5l" path="res://objects/selection_circle.gd" id="2_eesfp"]
+[ext_resource type="Script" uid="uid://cnt0ttcupry5l" path="res://objects/circles/selection_circle.gd" id="2_eesfp"]
 [ext_resource type="PackedScene" uid="uid://dcp87qsxy1ts3" path="res://assets/towers/basic_tower.tscn" id="3_hktix"]
 
 [node name="SelectionCIrcle" type="Sprite2D" node_paths=PackedStringArray("buttons", "close_button")]

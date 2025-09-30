@@ -1,4 +1,4 @@
-extends Label 
+extends Button 
 class_name MoneyDisplay
 
 func update()->void:

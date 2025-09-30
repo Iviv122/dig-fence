@@ -5,14 +5,23 @@ class_name SelectionCircle
 @export var towers: Array[PackedScene]
 @export var options : Array[Node]
 
-
 @export var close_button : Button
 
 @export var field : Field 
+
+var digger : Digger
+
 var X : int 
 var Y : int
 
 var button_tower_map: Dictionary = {}
+
+func destroy():
+	queue_free()
+
+func set_digger(dig:Digger) -> void:
+	digger = dig
+	digger.digged.connect(destroy)
 
 func spawn(tower : PackedScene) -> void:
 	field.place(X,Y,tower)

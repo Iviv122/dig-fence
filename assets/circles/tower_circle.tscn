@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://1h8skqsn3vq"]
+
+[ext_resource type="Texture2D" uid="uid://p58ceqnvmhj8" path="res://raw_assets/selection_circle.png" id="1_vmkf0"]
+[ext_resource type="Script" uid="uid://cnt0ttcupry5l" path="res://objects/circles/selection_circle.gd" id="2_thwck"]
+[ext_resource type="PackedScene" uid="uid://dcp87qsxy1ts3" path="res://assets/towers/basic_tower.tscn" id="3_8e8wr"]
+[ext_resource type="Texture2D" uid="uid://dc3s7snulyxgj" path="res://raw_assets/Money.png" id="4_thwck"]
+[ext_resource type="Texture2D" uid="uid://c2p1ypswcafpy" path="res://raw_assets/level_up.png" id="4_vmkf0"]
+
+[node name="SelectionCIrcle" type="Sprite2D" node_paths=PackedStringArray("buttons", "close_button")]
+texture = ExtResource("1_vmkf0")
+script = ExtResource("2_thwck")
+buttons = [null, null, NodePath("sell"), NodePath("level_up")]
+towers = Array[PackedScene]([ExtResource("3_8e8wr")])
+close_button = NodePath("close")
+metadata/_custom_type_script = "uid://cnt0ttcupry5l"
+
+[node name="sell" type="Button" parent="."]
+custom_minimum_size = Vector2(64, 64)
+offset_left = 64.0
+offset_top = -128.0
+offset_right = 128.0
+offset_bottom = -64.0
+pivot_offset = Vector2(32, 32)
+icon = ExtResource("4_thwck")
+icon_alignment = 1
+
+[node name="level_up" type="Button" parent="."]
+custom_minimum_size = Vector2(64, 64)
+offset_left = -128.0
+offset_top = -128.0
+offset_right = -64.0
+offset_bottom = -64.0
+pivot_offset = Vector2(32, 32)
+icon = ExtResource("4_vmkf0")
+icon_alignment = 1
+
+[node name="close" type="Button" parent="."]
+custom_minimum_size = Vector2(32, 32)
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+pivot_offset = Vector2(16, 16)
+text = "X"
