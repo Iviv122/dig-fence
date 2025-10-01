@@ -10,6 +10,7 @@ texture = ExtResource("1_lj7je")
 script = ExtResource("2_eesfp")
 buttons = [NodePath("basic"), NodePath("fast"), NodePath("slow"), NodePath("giga")]
 towers = Array[PackedScene]([ExtResource("3_hktix")])
+prices = Array[int]([100])
 close_button = NodePath("close")
 metadata/_custom_type_script = "uid://cnt0ttcupry5l"
 

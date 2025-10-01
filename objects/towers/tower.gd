@@ -20,7 +20,7 @@ signal sold(v : Vector2)
 
 func sell() ->void:
 	sold.emit(Vector2(X,Y))
-	PlayerInstance.money += summed_price
+	PlayerInstance.add_money(summed_price)
 
 func upgrade()->void:
 

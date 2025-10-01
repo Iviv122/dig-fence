@@ -3,13 +3,24 @@ class_name SelectionCircle
 
 @export var buttons: Array[Button]
 @export var towers: Array[PackedScene]
-@export var options : Array[Node]
+@export var prices: Array[int] 
+
+var used = false
 
 func spawn(tower : PackedScene) -> void:
-	field.place(X,Y,tower)
-	queue_free()
+	if !used:
+		field.place(X,Y,tower)
+		used = true
+		queue_free()
 
-func _ready() -> void:
+func update():
+	for i in range(min(buttons.size(), towers.size())):
+		if PlayerInstance.money >= prices[i]:
+			buttons[i].disabled = false 
+		else:
+			buttons[i].disabled =true 
+
+func set_buttons():
 
 	close_button.pressed.connect(
 		func():
@@ -18,7 +29,19 @@ func _ready() -> void:
 
 	for i in range(min(buttons.size(), towers.size())):
 
+		
+		buttons[i].text = str(prices[i])
 		buttons[i].pressed.connect(
 			func():
-				spawn(towers[i])
+				if !used:
+					spawn(towers[i])
+					PlayerInstance.substruct_money(prices[i])
 		)
+
+
+func _ready() -> void:
+	PlayerInstance.money_change.connect(update)
+	update()
+	set_buttons()
+
+	
