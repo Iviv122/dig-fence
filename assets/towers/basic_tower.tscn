@@ -8,6 +8,6 @@
 texture = ExtResource("1_ne8n1")
 script = ExtResource("2_ne8n1")
 radius = 128
-bullet_speed = 150
+bullet_speed = 250.0
 attackspeed = 2.0
 projectile = ExtResource("3_te8l0")

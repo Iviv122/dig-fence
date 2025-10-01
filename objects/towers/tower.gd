@@ -22,15 +22,17 @@ func sell() ->void:
 	sold.emit(Vector2(X,Y))
 	PlayerInstance.add_money(summed_price)
 
-func upgrade()->void:
 
-	summed_price += price*1.5
-	PlayerInstance.substruct_money(price*1.5)
-	
-	price*=1.5
-	radius*=1.5
-	attackspeed*=1.5
-	damage*=1.5
+func upgrade() -> void:
+	var upgrade_cost = price * 1.5
+	summed_price += upgrade_cost
+	PlayerInstance.substruct_money(upgrade_cost)
+
+	price *= 1.5
+	radius *= 1.5
+	attackspeed *= 1.5 
+	damage *= 1.5
+
 
 
 func shoot(target : Enemy)->void:

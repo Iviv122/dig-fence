@@ -5,11 +5,15 @@ var damage: float = 0
 var speed: float
 var e: Enemy
 
+var init_pos : Vector2
+
+var progress : float = 0
 
 func init(dam: float, s: float, enemy: Enemy):
 	damage = dam
 	speed = s
 	e = enemy
+	init_pos =  global_position
 
 
 func _process(delta: float) -> void:
@@ -18,8 +22,11 @@ func _process(delta: float) -> void:
 		return
 	
 	var distance_to_enemy = (e.global_position - global_position).length()
-	if distance_to_enemy <= 0.1:
+	
+	if distance_to_enemy <= 0.5:
 		e.deal_damage(damage)
 		queue_free()
 	else:
-		global_position = global_position.move_toward(e.global_position, speed * delta)
+		global_position = init_pos.move_toward(e.global_position, progress)
+
+	progress += delta*speed
