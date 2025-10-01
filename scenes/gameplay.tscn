@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://bxg8526utvvt3"]
+[gd_scene load_steps=29 format=3 uid="uid://bxg8526utvvt3"]
 
 [ext_resource type="Script" uid="uid://bvf884qvmlsuh" path="res://objects/field/field.gd" id="1_n4psk"]
 [ext_resource type="Script" uid="uid://0logelvjgqmj" path="res://objects/camera.gd" id="3_oe8ih"]
@@ -16,6 +16,9 @@
 [ext_resource type="PackedScene" uid="uid://drf3yl1miugcv" path="res://assets/enemies/green_enemy.tscn" id="14_nwk8b"]
 [ext_resource type="PackedScene" uid="uid://dyrg0xpcct0bm" path="res://assets/enemies/yellow_enemy.tscn" id="15_x2ust"]
 [ext_resource type="Script" uid="uid://cb5gqnacrvxa6" path="res://objects/effects/shake_on_mistake.gd" id="16_x2ust"]
+[ext_resource type="Script" uid="uid://cv40nq5ftxnpx" path="res://objects/general_ui/lose_canvas.gd" id="17_w3w6i"]
+[ext_resource type="Script" uid="uid://db5jb5chr8cwk" path="res://objects/general_ui/restart.gd" id="18_pv71h"]
+[ext_resource type="Script" uid="uid://dc7t7d6n5sgef" path="res://objects/general_ui/click_to_close.gd" id="19_m6b5a"]
 
 [sub_resource type="Curve" id="Curve_x2ust"]
 _limits = [-1.0, 1.0, -1.0, 1.0]
@@ -165,4 +168,56 @@ field = NodePath("../Field")
 line = NodePath("../Line2D")
 enemy = Array[PackedScene]([ExtResource("10_3n40r"), ExtResource("14_nwk8b"), ExtResource("15_x2ust")])
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="LoseCanvas" type="CanvasLayer" parent="."]
+script = ExtResource("17_w3w6i")
+metadata/_custom_type_script = "uid://cv40nq5ftxnpx"
+
+[node name="Panel" type="Panel" parent="LoseCanvas"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LoseCanvas/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="LoseCanvas/Panel/VBoxContainer"]
+layout_mode = 2
+text = "You died!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="LoseCanvas/Panel/VBoxContainer"]
+layout_mode = 2
+text = "Restart"
+script = ExtResource("18_pv71h")
+
+[node name="Button2" type="Button" parent="LoseCanvas/Panel/VBoxContainer" node_paths=PackedStringArray("obj")]
+layout_mode = 2
+text = "Continue"
+script = ExtResource("19_m6b5a")
+obj = NodePath("../../..")
+metadata/_custom_type_script = "uid://dc7t7d6n5sgef"
+
+[node name="Label2" type="Label" parent="LoseCanvas/Panel/VBoxContainer"]
+layout_mode = 2
+text = "You will continue
+as nothing.
+this screen won't
+ appear again
+"
+horizontal_alignment = 1
+vertical_alignment = 1
