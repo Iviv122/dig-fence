@@ -50,7 +50,7 @@ func hide_button():
 
 	if x - 1 < 0:
 		left_button.hide()
-	elif x + 1 > field.width - 1:
+	if x + 1 > field.width - 1:
 		right_button.hide()
 
 	if Vector2(x - 1, y) in field.towers and left_button.visible:
@@ -60,9 +60,9 @@ func hide_button():
 	if Vector2(x + 1, y) in field.towers and right_button.visible:
 		right_button.hide()
 
-	if field.get_tile(y,x-1)  is PathTile and left_button.visible:
+	if field.get_tile(x-1,y)  is PathTile and left_button.visible:
 		left_button.hide()
-	if field.get_tile(y,x+1) is PathTile and right_button.visible:
+	if field.get_tile(x+1,y) is PathTile and right_button.visible:
 		right_button.hide()
 	
 
