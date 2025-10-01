@@ -26,7 +26,7 @@ func upgrade()->void:
 
 	summed_price += price*1.5
 	PlayerInstance.substruct_money(price*1.5)
-
+	
 	price*=1.5
 	radius*=1.5
 	attackspeed*=1.5

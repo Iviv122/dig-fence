@@ -24,5 +24,8 @@ func _process(_delta: float) -> void:
 		e.deal_damage(damage)		
 		queue_free()
 	else:
-		global_position = Vector2(move_toward(global_position.x,e.global_position.x,speed),move_toward(global_position.y,e.global_position.y,speed))
+		var x = move_toward(global_position.x,e.global_position.x,speed)
+		var y = move_toward(global_position.y,e.global_position.y,speed)
+		
+		global_position = Vector2(x,y)
 		

@@ -46,6 +46,20 @@ func place(x,y,tower:PackedScene):
 	add_child(t)
 	update.emit()
 
+func get_tile(x, y):
+	if x < 0 or x >= width:
+		return null
+	if y < 0 or y >= depth:
+		return null
+
+	var index = y * width + x
+	if index >= matrix.size():
+		return null
+
+	return matrix[index]
+
+
+
 func place_path(x, y):
 	if matrix[y * width + x] is ContinueTile:
 		replace_add_line()
