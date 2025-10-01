@@ -28,6 +28,14 @@ window/size/resizable=false
 
 enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg")
 
+[global_group]
+
+wave_end=""
+
+[gui]
+
+theme/custom_font="uid://cxgs47nkog5fv"
+
 [input]
 
 left={

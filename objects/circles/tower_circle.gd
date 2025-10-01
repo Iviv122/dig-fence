@@ -24,6 +24,15 @@ func _draw():
 	draw_circle(Vector2.ZERO, tower.radius, Color(0.2, 0.8, 1.0, 0.3)) # Light blue, semi-transparent
 
 func set_buttons():
+	if tower.upgrade_num <= tower.max_upgrade: 
+		upgrade_button.pressed.connect(
+			func():
+				upgrade()
+		)
+	else:
+		upgrade_button.queue_free()
+		upgrade_button = null
+
 	close_button.pressed.connect(
 		func():
 			queue_free()
@@ -32,22 +41,22 @@ func set_buttons():
 		func():
 			sell()
 	)
-	upgrade_button.pressed.connect(
-		func():
-			upgrade()
-	)
+	
 
 func update():
-	
-	if PlayerInstance.money >= tower.price:
-		upgrade_button.disabled = false
-	else:
-		upgrade_button.disabled = true 
-	upgrade_button.text = str(tower.price)	
+	if  upgrade_button != null:
+		upgrade_button.text = str(tower.price)	
+		if PlayerInstance.money >= tower.price:
+			upgrade_button.disabled = false
+		else:
+			upgrade_button.disabled = true 
+
+
 	sell_button.text = str(tower.summed_price)
 
 func _ready():
 	tower = field.towers[Vector2(X, Y)]
 	PlayerInstance.money_change.connect(update)
-	update()
+	
 	set_buttons()
+	update()

@@ -9,6 +9,9 @@ class_name Tower
 
 @export var projectile : PackedScene #not necessary
 
+@export var max_upgrade : int = 1
+var upgrade_num : int = 0
+
 var X :int
 var Y :int
 var field : Field
@@ -24,15 +27,16 @@ func sell() ->void:
 
 
 func upgrade() -> void:
-	var upgrade_cost = price * 1.5
-	summed_price += upgrade_cost
-	PlayerInstance.substruct_money(upgrade_cost)
+	if upgrade_num <= max_upgrade:
 
-	price *= 1.5
-	radius *= 1.5
-	attackspeed *= 1.5 
-	damage *= 1.5
+		summed_price += price
+		PlayerInstance.substruct_money(price)
 
+		price *= 1.5
+		radius *= 1.5
+		attackspeed *= 1.5 
+		damage *= 1.5
+		upgrade_num +=1
 
 
 func shoot(target : Enemy)->void:

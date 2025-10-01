@@ -10,11 +10,14 @@ class_name Spawner
 var wave = 0
 var wave_material = 0
 
+
 func _ready():
 	field.new_line.connect(start_wave)
 
 func stop_wave():
+	print("wave_end")
 	digger.show()
+	get_tree().call_group("wave_end","wave_end")
 
 func start_wave():
 	digger.hide()
@@ -33,9 +36,8 @@ func spawn():
 
 		e.global_position = p
 		add_child(e)
-		await get_tree().create_timer(0.3).timeout
+		await get_tree().create_timer(0.1).timeout
 		spawn()
 		wave_material-=1
-
 	else:
 		stop_wave()
