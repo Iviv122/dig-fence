@@ -1,12 +1,20 @@
-[gd_scene load_steps=6 format=3 uid="uid://du0ffo05f6asl"]
+[gd_scene load_steps=10 format=3 uid="uid://du0ffo05f6asl"]
 
 [ext_resource type="Script" uid="uid://cknjfl8ao06mq" path="res://objects/player/money_display.gd" id="1_etwi0"]
 [ext_resource type="Texture2D" uid="uid://dc3s7snulyxgj" path="res://raw_assets/Money.png" id="1_rvqgq"]
 [ext_resource type="Script" uid="uid://ccau7boslisuf" path="res://objects/player/health_display.gd" id="2_ohefe"]
 [ext_resource type="Texture2D" uid="uid://i8j22ufcoc1m" path="res://raw_assets/health_sprite.png" id="3_kd4iw"]
+[ext_resource type="Texture2D" uid="uid://du3j2eyb8cbpd" path="res://raw_assets/balance.png" id="5_j0amv"]
+[ext_resource type="Script" uid="uid://dc7t7d6n5sgef" path="res://objects/general_ui/click_to_close.gd" id="6_ekixd"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kd4iw"]
 texture = ExtResource("3_kd4iw")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ekixd"]
+texture = ExtResource("5_j0amv")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_j0amv"]
+texture = ExtResource("5_j0amv")
 
 [node name="Control" type="CanvasLayer"]
 
@@ -33,3 +41,55 @@ horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("2_ohefe")
 metadata/_custom_type_script = "uid://ccau7boslisuf"
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -151.0
+offset_right = -111.0
+offset_bottom = 40.0
+grow_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_ekixd")
+
+[node name="Panel2" type="Panel" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -302.5
+offset_right = 250.0
+offset_bottom = 302.5
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Panel" type="Panel" parent="Panel2/VBoxContainer"]
+custom_minimum_size = Vector2(400, 400)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_j0amv")
+
+[node name="Label3" type="Label" parent="Panel2/VBoxContainer"]
+layout_mode = 2
+text = "Every element in cycle is
+- effective against next one
+- ok againt itself
+- bad againt previous one"
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="Panel2/VBoxContainer" node_paths=PackedStringArray("obj")]
+layout_mode = 2
+text = "Continue"
+script = ExtResource("6_ekixd")
+obj = NodePath("../..")
+metadata/_custom_type_script = "uid://dc7t7d6n5sgef"

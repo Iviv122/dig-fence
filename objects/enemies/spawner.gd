@@ -23,7 +23,7 @@ func stop_wave():
 func start_wave():
 	digger.hide()
 	
-	wave_material = (wave+3)*(wave+3)
+	wave_material = (wave+2)*(wave+2)
 	await  get_tree().process_frame
 	spawn()
 
@@ -41,8 +41,11 @@ func spawn():
 		var p = line.points[n-1]
 
 		e.global_position = p
+
+		e.health += e.health*0.1*wave
+
 		add_child(e)
-		await get_tree().create_timer(0.1).timeout
+		await get_tree().create_timer(0.2).timeout
 		spawn()
 		wave_material-=1
 	else:

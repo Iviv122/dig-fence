@@ -6,6 +6,10 @@ extends Camera2D
 
 var dir: Vector2 = Vector2(0, 0)
 
+var dragging: bool = false
+var drag_start_mouse_pos: Vector2
+var drag_start_camera_pos: Vector2
+
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("left"):
 		dir.x -= 1
@@ -32,7 +36,25 @@ func _input(event: InputEvent) -> void:
 		zoom.x -= 1 
 		zoom.y -= 1
 
-func _process(_delta: float) -> void:
-	position += dir * Speed * _delta
-	position = Vector2(clamp(position.x,limit_left+get_viewport_rect().size.x/2,limit_right-get_viewport_rect().size.x/2),clamp(position.y,limit_top+get_viewport_rect().size.y/2,limit_bottom-get_viewport_rect().size.y/2))
+	if event is InputEventMouseButton:
+		var mouse_event := event as InputEventMouseButton
+		if mouse_event.button_index == MOUSE_BUTTON_MIDDLE:
+			if mouse_event.pressed:
+				dragging = true
+				drag_start_mouse_pos = get_viewport().get_mouse_position()
+				drag_start_camera_pos = position
+			else:
+				dragging = false
+
+func _process(delta: float) -> void:
+	position += dir * Speed * delta
+
+	if dragging:
+		var current_mouse_pos = get_viewport().get_mouse_position()
+		var off = (drag_start_mouse_pos - current_mouse_pos) * zoom
+		position = drag_start_camera_pos + off 
+
+	var half_viewport = get_viewport_rect().size / 2 * zoom
+	position.x = clamp(position.x, limit_left + half_viewport.x, limit_right - half_viewport.x)
+	position.y = clamp(position.y, limit_top + half_viewport.y, limit_bottom - half_viewport.y)
 

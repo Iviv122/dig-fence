@@ -27,9 +27,9 @@ color = Color(1, 1, 0, 1)
 [node name="Tower" type="Sprite2D"]
 texture = ExtResource("1_57ven")
 script = ExtResource("2_i6fn1")
-radius = 250.0
+radius = 125.0
 bullet_speed = 500.0
-attackspeed = 2.0
+attackspeed = 1.0
 projectile = ExtResource("3_abgjx")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
