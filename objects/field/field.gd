@@ -32,7 +32,8 @@ func place(x,y,tower:PackedScene):
 	if matrix[y * width + x] is PathTile:
 		return;
 	
-	var t : Tower = tower.instantiate()
+	var t = tower.instantiate()
+
 	t.global_position = global_position + Vector2(x * tile_width, y * tile_width)
 	t.X = x
 	t.Y = y
@@ -42,7 +43,7 @@ func place(x,y,tower:PackedScene):
 		func(v):
 			remove_tower(v)
 	)
-
+	
 	add_child(t)
 	update.emit()
 

@@ -9,6 +9,7 @@ var used = false
 
 func sell():
 	if !used:
+
 		tower.sell()
 		used = true
 		queue_free()
@@ -21,6 +22,7 @@ func upgrade():
 			queue_free()
 
 func _draw():
+	print(tower.radius)
 	draw_circle(Vector2.ZERO, tower.radius, Color(0.2, 0.8, 1.0, 0.3)) # Light blue, semi-transparent
 
 func set_buttons():

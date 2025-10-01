@@ -10,4 +10,5 @@ gradient = SubResource("Gradient_0s5v5")
 [node name="farm" type="Sprite2D"]
 texture = SubResource("GradientTexture2D_f7rf4")
 script = ExtResource("1_xivlw")
+radius = 0.0
 metadata/_custom_type_script = "uid://d22sckfdb060i"
