@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://bvt6uo2jewax0"]
+
+[ext_resource type="Script" uid="uid://chpvda37jwxhc" path="res://assets/dialogs/dialog.gd" id="1_xi8ub"]
+[ext_resource type="Script" uid="uid://bdk1bhmoghkgd" path="res://assets/dialogs/fisrt_dialog.gd" id="2_e1enq"]
+[ext_resource type="PackedScene" uid="uid://cjh6frbdkn6h4" path="res://scenes/dialog2.tscn" id="3_n72dw"]
+
+[node name="Dialog1" type="CanvasLayer"]
+
+[node name="Dialog2" type="VBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xi8ub")
+dialogue_gdscript = ExtResource("2_e1enq")
+scene = ExtResource("3_n72dw")
+
+[node name="PanelContainer" type="PanelContainer" parent="Dialog2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Dialog2/PanelContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 11
+text = "Press <Enter> or <Space> to progress the dialogue."

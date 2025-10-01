@@ -117,6 +117,9 @@ amplify = 5.0
 
 [node name="camera" type="Camera2D" parent="game/MistakeShaker"]
 offset = Vector2(160, 0)
+limit_left = -500
+limit_top = -200
+limit_right = 400
 script = ExtResource("3_oe8ih")
 Speed = 400.0
 MaxZoom = 2

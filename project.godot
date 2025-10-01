@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="DigFence"
-run/main_scene="uid://bxg8526utvvt3"
+run/main_scene="uid://blgpgggy78yv3"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 
 [autoload]
@@ -26,7 +26,7 @@ window/size/resizable=false
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg")
+enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg", "res://addons/rubonnek.dialogue_engine/plugin.cfg")
 
 [global_group]
 

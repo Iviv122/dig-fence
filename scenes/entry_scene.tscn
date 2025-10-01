@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://blgpgggy78yv3"]
+
+[ext_resource type="Script" uid="uid://diptl7465rmdq" path="res://objects/general_ui/click_to_load.gd" id="1_djccg"]
+[ext_resource type="Script" uid="uid://cvkvkhkx1wnpm" path="res://objects/effects/pulsating_text.gd" id="1_pev8h"]
+[ext_resource type="PackedScene" uid="uid://bvt6uo2jewax0" path="res://scenes/dialog1.tscn" id="2_m6y4d"]
+
+[node name="EntryScene" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("1_djccg")
+scene = ExtResource("2_m6y4d")
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -208.0
+offset_top = -8.0
+offset_right = 208.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "CLICK ANYTHING TO CONTINUE"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("1_pev8h")
+min_alpha = 0.5
+metadata/_custom_type_script = "uid://cvkvkhkx1wnpm"

@@ -16,11 +16,13 @@ func _ready():
 
 func stop_wave():
 	print("wave_end")
+	wave +=1
 	digger.show()
 	get_tree().call_group("wave_end","wave_end")
 
 func start_wave():
 	digger.hide()
+	
 	wave_material = (wave+3)*(wave+3)
 	await  get_tree().process_frame
 	spawn()
@@ -28,8 +30,12 @@ func start_wave():
 func spawn():
 	if wave_material > 0:
 		var n = line.points.size()
-		
-		var e : Enemy = enemy.pick_random().instantiate()
+
+		var e : Enemy
+		if wave >= enemy.size():	
+			e = enemy.pick_random().instantiate()
+		else:
+			e = enemy[wave].instantiate() 
 
 		e.set_line(line)
 		var p = line.points[n-1]

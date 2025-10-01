@@ -41,7 +41,7 @@ func upgrade() -> void:
 	upgrade_num+=1
 
 
-func shoot(target : Enemy)->void:
+func shoot(_target : Enemy)->void:
 	pass
 func check() -> void:
 	pass

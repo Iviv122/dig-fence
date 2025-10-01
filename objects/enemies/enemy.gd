@@ -63,7 +63,7 @@ func deal_damage(a: float, incoming_type: DamageType):
 				DamageType.Blue: multiplier = 1.5
 				DamageType.Yellow: multiplier = 0.2
 
-	if multiplier == 0.7:
+	if multiplier == 0.2:
 		print("ineffective")
 	var final_damage = a * multiplier
 	health -= final_damage
