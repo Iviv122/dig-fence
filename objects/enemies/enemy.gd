@@ -12,6 +12,7 @@ func set_line(l : Line2D):
 	index = line.points.size()-1
 
 func die():
+	PlayerInstance.add_money(15)	
 	queue_free()
 
 func suicide():

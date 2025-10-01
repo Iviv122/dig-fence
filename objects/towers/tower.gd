@@ -2,10 +2,10 @@ extends Tile
 class_name Tower 
 
 @export var price : int = 100
-@export var radius : int = 5
-@export var bullet_speed : int = 5
+@export var radius : float = 5
+@export var bullet_speed : float = 5
 @export var attackspeed : float = 0.1 # seconds for single attack
-@export var damage : int = 1
+@export var damage : float = 1
 
 @export var projectile : PackedScene #not necessary
 
