@@ -1,10 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://dd73r40x2p4r4"]
+[gd_scene load_steps=5 format=3 uid="uid://dd73r40x2p4r4"]
 
 [ext_resource type="Texture2D" uid="uid://dam3m2p84xvhl" path="res://raw_assets/money_farm.png" id="1_ee4re"]
 [ext_resource type="Script" uid="uid://d22sckfdb060i" path="res://objects/towers/farm.gd" id="1_s0qgc"]
+[ext_resource type="Script" uid="uid://yi8kypvqoy67" path="res://objects/effects/rotating_sprite.gd" id="3_rxa0w"]
+[ext_resource type="PackedScene" uid="uid://busuwtmk2fhmu" path="res://assets/effects/got_money.tscn" id="4_fp6tv"]
 
-[node name="farm" type="Sprite2D"]
-texture = ExtResource("1_ee4re")
+[node name="farm" type="Sprite2D" node_paths=PackedStringArray("money_effect")]
 script = ExtResource("1_s0qgc")
+money_effect = NodePath("GotMoney")
 radius = 0.0
 metadata/_custom_type_script = "uid://d22sckfdb060i"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ee4re")
+script = ExtResource("3_rxa0w")
+speed = 32.0
+
+[node name="GotMoney" parent="." instance=ExtResource("4_fp6tv")]

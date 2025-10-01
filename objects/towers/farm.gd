@@ -2,6 +2,7 @@ extends Tower
 class_name Farm
 
 @export var money_per_wave : int = 100
+@export var money_effect : GPUParticles2D
 
 func _ready():
 	add_to_group("wave_end")
@@ -10,6 +11,7 @@ func wave_end():
 	print("MONEY COMES NOW")
 	PlayerInstance.add_money(money_per_wave)
 	shoot_label()
+	money_effect.restart()
 
 func shoot_label():
 	var l = Label.new()
