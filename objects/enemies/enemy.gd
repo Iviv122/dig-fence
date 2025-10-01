@@ -48,19 +48,19 @@ func deal_damage(a: float, incoming_type: DamageType):
 		DamageType.Blue:
 			match damagetype:
 				DamageType.Blue: multiplier = 0.7
-				DamageType.Yellow: multiplier = 1.0
+				DamageType.Yellow: multiplier = 1.5
 				DamageType.Green: multiplier = 0.2
 
 		DamageType.Yellow:
 			match damagetype:
 				DamageType.Yellow: multiplier = 0.7
-				DamageType.Green: multiplier = 1.0
+				DamageType.Green: multiplier = 1.5
 				DamageType.Blue: multiplier = 0.2
 
 		DamageType.Green:
 			match damagetype:
 				DamageType.Green: multiplier = 0.7
-				DamageType.Blue: multiplier = 1.0
+				DamageType.Blue: multiplier = 1.5
 				DamageType.Yellow: multiplier = 0.2
 
 	if multiplier == 0.7:

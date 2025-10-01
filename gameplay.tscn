@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bxg8526utvvt3"]
+[gd_scene load_steps=26 format=3 uid="uid://bxg8526utvvt3"]
 
 [ext_resource type="Script" uid="uid://bvf884qvmlsuh" path="res://objects/field/field.gd" id="1_n4psk"]
 [ext_resource type="Script" uid="uid://0logelvjgqmj" path="res://objects/camera.gd" id="3_oe8ih"]
@@ -15,6 +15,16 @@
 [ext_resource type="PackedScene" uid="uid://du0ffo05f6asl" path="res://assets/ui.tscn" id="11_3n40r"]
 [ext_resource type="PackedScene" uid="uid://drf3yl1miugcv" path="res://assets/enemies/green_enemy.tscn" id="14_nwk8b"]
 [ext_resource type="PackedScene" uid="uid://dyrg0xpcct0bm" path="res://assets/enemies/yellow_enemy.tscn" id="15_x2ust"]
+[ext_resource type="Script" uid="uid://cb5gqnacrvxa6" path="res://objects/effects/shake_on_mistake.gd" id="16_x2ust"]
+
+[sub_resource type="Curve" id="Curve_x2ust"]
+_limits = [-1.0, 1.0, -1.0, 1.0]
+bake_resolution = 1
+_data = [Vector2(-0.76, 0), 0.0, 0.0, 0, 0, Vector2(-0.5, 1), 0.0, 0.0, 0, 0, Vector2(-0.326531, -1), 0.0, 0.0, 0, 0, Vector2(-0.0510204, 1), 0.0, 0.0, 0, 0, Vector2(0.0555555, -1), 0.0, 0.0, 0, 0, Vector2(0.22449, 1), 0.0, 0.0, 0, 0, Vector2(0.306122, -1), 0.0, 0.0, 0, 0, Vector2(0.455556, 1), 0.0, 0.0, 0, 0, Vector2(0.571429, -1), 0.0, 0.0, 0, 0, Vector2(0.765, 0), 0.0, 0.0, 0, 0]
+point_count = 10
+
+[sub_resource type="CurveTexture" id="CurveTexture_x2ust"]
+curve = SubResource("Curve_x2ust")
 
 [sub_resource type="Shader" id="Shader_tyrfw"]
 code = "shader_type canvas_item;
@@ -99,20 +109,26 @@ script = ExtResource("1_n4psk")
 entry_portal = ExtResource("4_fbudy")
 metadata/_custom_type_script = "uid://bvf884qvmlsuh"
 
-[node name="camera" type="Camera2D" parent="game"]
+[node name="MistakeShaker" type="Node2D" parent="game"]
+script = ExtResource("16_x2ust")
+curv = SubResource("CurveTexture_x2ust")
+speed = 2.0
+amplify = 5.0
+
+[node name="camera" type="Camera2D" parent="game/MistakeShaker"]
 offset = Vector2(160, 0)
 script = ExtResource("3_oe8ih")
 Speed = 400.0
 MaxZoom = 2
 metadata/_custom_type_script = "uid://0logelvjgqmj"
 
-[node name="BackgroundMajor" type="Sprite2D" parent="game/camera"]
+[node name="BackgroundMajor" type="Sprite2D" parent="game/MistakeShaker/camera"]
 z_index = -999
 y_sort_enabled = true
 material = SubResource("ShaderMaterial_eod45")
 texture = SubResource("GradientTexture2D_tyrfw")
 
-[node name="BackgroundMajor2" type="Sprite2D" parent="game/camera"]
+[node name="BackgroundMajor2" type="Sprite2D" parent="game/MistakeShaker/camera"]
 z_index = -999
 y_sort_enabled = true
 material = SubResource("ShaderMaterial_nwk8b")

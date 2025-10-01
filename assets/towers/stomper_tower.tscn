@@ -1,14 +1,54 @@
-[gd_scene load_steps=4 format=3 uid="uid://co7642cr31wxw"]
+[gd_scene load_steps=10 format=3 uid="uid://co7642cr31wxw"]
 
+[ext_resource type="Texture2D" uid="uid://comlv82gc2ofo" path="res://raw_assets/green.png" id="1_7hx34"]
 [ext_resource type="Script" uid="uid://bifh5hnf0qxvg" path="res://objects/towers/stomper.gd" id="1_84if6"]
-[ext_resource type="Texture2D" uid="uid://bm58e6ycsov0v" path="res://raw_assets/stomper.png" id="1_ypyp8"]
 [ext_resource type="PackedScene" uid="uid://c84akd6w6fkum" path="res://assets/effects/stomp_effect.tscn" id="2_f8bdw"]
+[ext_resource type="Texture2D" uid="uid://bn378sfke1yxf" path="res://raw_assets/particle.png" id="4_7hx34"]
+[ext_resource type="Texture2D" uid="uid://casiaatwwrml3" path="res://raw_assets/spike.png" id="5_6n1q2"]
+[ext_resource type="Script" uid="uid://yi8kypvqoy67" path="res://objects/effects/rotating_sprite.gd" id="6_r5osk"]
+
+[sub_resource type="Curve" id="Curve_7hx34"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_6n1q2"]
+curve = SubResource("Curve_7hx34")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6n1q2"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(30, 30, 1)
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 1.0
+emission_ring_inner_radius = 1.0
+emission_ring_cone_angle = 90.0
+angle_min = 161.00002
+angle_max = 491.40002
+angular_velocity_min = -465.88
+angular_velocity_max = 347.28998
+gravity = Vector3(0, -60, 0)
+linear_accel_min = -2.2351742e-06
+linear_accel_max = 3.5299976
+scale_max = 3.0
+scale_curve = SubResource("CurveTexture_6n1q2")
+color = Color(0, 0.88235295, 0.17254902, 1)
 
 [node name="Stomper" type="Sprite2D"]
-texture = ExtResource("1_ypyp8")
+texture = ExtResource("1_7hx34")
 script = ExtResource("1_84if6")
 stomp_effect = ExtResource("2_f8bdw")
 damage_type = 2
 radius = 64.0
 attackspeed = 1.0
 metadata/_custom_type_script = "uid://bifh5hnf0qxvg"
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+texture = ExtResource("4_7hx34")
+lifetime = 0.5
+process_material = SubResource("ParticleProcessMaterial_6n1q2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("5_6n1q2")
+script = ExtResource("6_r5osk")
+speed = 15.0

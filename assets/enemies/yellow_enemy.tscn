@@ -15,8 +15,8 @@ bg_color = Color(0.6, 1, 0.6, 1)
 
 [node name="enemy" type="Area2D"]
 script = ExtResource("1_dq4uw")
-speed = 0.7
-health = 3.0
+speed = 0.5
+health = 30.0
 damagetype = 1
 metadata/_custom_type_script = "uid://crvxogcmhm8m5"
 

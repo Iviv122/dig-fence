@@ -40,7 +40,6 @@ func upgrade() -> void:
 
 
 func shoot(target : Enemy)->void:
-	if reload_time <= 0:
 		var p : SimpleBullet = projectile.instantiate()
 		
 		p.global_position = global_position
@@ -68,11 +67,11 @@ func check() -> void:
 	var n = result.size()
 
 	if n > 0:
-		for i in range(0,3):
-			
-			var collider = result.pick_random().collider
 
-			shoot(collider)
+		if reload_time <= 0:
+			for i in range(0,3):
+				var collider = result.pick_random().collider
+				shoot(collider)
 
 func _process(delta):
 	reload_time -= delta*attackspeed

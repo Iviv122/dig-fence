@@ -1,15 +1,15 @@
 [gd_scene load_steps=11 format=3 uid="uid://grdmqa707a7b"]
 
 [ext_resource type="Texture2D" uid="uid://p58ceqnvmhj8" path="res://raw_assets/selection_circle.png" id="1_lj7je"]
-[ext_resource type="Texture2D" uid="uid://ybypo4beifcd" path="res://raw_assets/turret.png" id="2_0ti60"]
 [ext_resource type="Script" uid="uid://cnt0ttcupry5l" path="res://objects/circles/selection_circle.gd" id="2_eesfp"]
-[ext_resource type="PackedScene" uid="uid://dcp87qsxy1ts3" path="res://assets/towers/basic_tower.tscn" id="3_hktix"]
+[ext_resource type="PackedScene" uid="uid://dcp87qsxy1ts3" path="res://assets/towers/tesla_tower.tscn" id="3_hktix"]
 [ext_resource type="PackedScene" uid="uid://dd73r40x2p4r4" path="res://assets/towers/farm_tower.tscn" id="4_6ixfk"]
 [ext_resource type="PackedScene" uid="uid://co7642cr31wxw" path="res://assets/towers/stomper_tower.tscn" id="5_soxl6"]
 [ext_resource type="PackedScene" uid="uid://bl4l2raxgsytv" path="res://assets/towers/sniper_tower.tscn" id="6_bp21k"]
-[ext_resource type="Texture2D" uid="uid://jgynupd5uuf" path="res://raw_assets/sniper.png" id="8_03lh5"]
-[ext_resource type="Texture2D" uid="uid://bm58e6ycsov0v" path="res://raw_assets/stomper.png" id="8_mwnf8"]
+[ext_resource type="Texture2D" uid="uid://cw0cv82f4hldx" path="res://raw_assets/tesla.png" id="7_y7pgp"]
 [ext_resource type="Texture2D" uid="uid://dam3m2p84xvhl" path="res://raw_assets/money_farm.png" id="8_y7pgp"]
+[ext_resource type="Texture2D" uid="uid://comlv82gc2ofo" path="res://raw_assets/green.png" id="9_y7pgp"]
+[ext_resource type="Texture2D" uid="uid://cil3tm03bn7qw" path="res://raw_assets/blue_tower.png" id="10_y7pgp"]
 
 [node name="SelectionCIrcle" type="Sprite2D" node_paths=PackedStringArray("buttons", "close_button")]
 texture = ExtResource("1_lj7je")
@@ -29,7 +29,7 @@ offset_bottom = 128.0
 pivot_offset = Vector2(32, 32)
 text = "100
 "
-icon = ExtResource("2_0ti60")
+icon = ExtResource("7_y7pgp")
 icon_alignment = 1
 vertical_icon_alignment = 0
 
@@ -55,7 +55,7 @@ offset_bottom = -64.0
 pivot_offset = Vector2(32, 32)
 text = "100
 "
-icon = ExtResource("8_mwnf8")
+icon = ExtResource("9_y7pgp")
 icon_alignment = 1
 vertical_icon_alignment = 0
 
@@ -68,7 +68,7 @@ offset_bottom = -64.0
 pivot_offset = Vector2(32, 32)
 text = "100
 "
-icon = ExtResource("8_03lh5")
+icon = ExtResource("10_y7pgp")
 icon_alignment = 1
 vertical_icon_alignment = 0
 
