@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://bl4l2raxgsytv"]
+
+[ext_resource type="Texture2D" uid="uid://jgynupd5uuf" path="res://raw_assets/sniper.png" id="1_5i62b"]
+[ext_resource type="Script" uid="uid://dj0mpdcxvmipg" path="res://objects/towers/sniper.gd" id="1_ixtbg"]
+[ext_resource type="PackedScene" uid="uid://caaxw4dlaqbib" path="res://assets/projectiles/blue_bullet.tscn" id="3_5i62b"]
+
+[node name="SniperTower" type="Sprite2D"]
+texture = ExtResource("1_5i62b")
+script = ExtResource("1_ixtbg")
+radius = 250.0
+bullet_speed = 1000.0
+attackspeed = 0.3
+damage = 5.0
+projectile = ExtResource("3_5i62b")
+metadata/_custom_type_script = "uid://dj0mpdcxvmipg"

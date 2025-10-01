@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://ybypo4beifcd" path="res://raw_assets/turret.png" id="1_ne8n1"]
 [ext_resource type="Script" uid="uid://boro4qnph1pgg" path="res://objects/towers/tower.gd" id="2_ne8n1"]
-[ext_resource type="PackedScene" uid="uid://dcp57wmggbabg" path="res://assets/projectiles/simple_bullet.tscn" id="3_te8l0"]
+[ext_resource type="PackedScene" uid="uid://0l1o8j4pf1i1" path="res://assets/projectiles/yellow_bullet.tscn" id="3_ne8n1"]
 
 [node name="Tower" type="Sprite2D"]
 texture = ExtResource("1_ne8n1")
@@ -10,4 +10,4 @@ script = ExtResource("2_ne8n1")
 radius = 128
 bullet_speed = 250.0
 attackspeed = 2.0
-projectile = ExtResource("3_te8l0")
+projectile = ExtResource("3_ne8n1")

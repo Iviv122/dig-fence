@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://caaxw4dlaqbib"]
+
+[ext_resource type="Texture2D" uid="uid://dehvdgtn6p7ap" path="res://raw_assets/blue_shard.png" id="1_p1c8k"]
+[ext_resource type="Script" uid="uid://c1phhuekf5k4r" path="res://objects/towers/simple_bullet.gd" id="2_sm5gh"]
+
+[node name="Node2D" type="Sprite2D"]
+texture = ExtResource("1_p1c8k")
+script = ExtResource("2_sm5gh")
+metadata/_custom_type_script = "uid://c1phhuekf5k4r"

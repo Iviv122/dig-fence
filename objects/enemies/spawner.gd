@@ -5,7 +5,7 @@ class_name Spawner
 @export var field : Field 
 @export var line : Line2D 
 
-@export var enemy : PackedScene
+@export var enemy : Array[PackedScene]
 
 var wave = 0
 var wave_material = 0
@@ -29,7 +29,7 @@ func spawn():
 	if wave_material > 0:
 		var n = line.points.size()
 		
-		var e : Enemy = enemy.instantiate()
+		var e : Enemy = enemy.pick_random().instantiate()
 
 		e.set_line(line)
 		var p = line.points[n-1]

@@ -14,7 +14,7 @@ func wave_end():
 func shoot_label():
 	var l = Label.new()
 
-	l.text = str(money_per_wave)
+	l.text = str(money_per_wave) + "$"
 	l.add_theme_color_override("font_color",Color(0,1,0))
 
 	l.top_level = true

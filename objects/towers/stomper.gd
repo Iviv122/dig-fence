@@ -2,6 +2,7 @@ extends Tower
 class_name Stomper
 
 @export var stomp_effect : PackedScene
+@export var damage_type : Enemy.DamageType
 
 func check()->void:
 	if reload_time <= 0:
@@ -23,7 +24,7 @@ func check()->void:
 
 		if n>0: 
 			for i in result:
-				i.collider.deal_damage(damage)
+				i.collider.deal_damage(damage,damage_type)
 			add_child(stomp_effect.instantiate())
 			reload_time = 1	
 

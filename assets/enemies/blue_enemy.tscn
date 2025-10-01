@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://b7cvsd313woo5"]
+
+[ext_resource type="Script" uid="uid://crvxogcmhm8m5" path="res://objects/enemies/enemy.gd" id="1_3epn5"]
+[ext_resource type="Texture2D" uid="uid://bilu2tky03go3" path="res://raw_assets/blue_enemy.png" id="2_ait0i"]
+[ext_resource type="Script" uid="uid://csgaysta4xfn1" path="res://objects/enemies/enemy_health_bar.gd" id="3_10gli"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rf5tu"]
+radius = 18.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_10gli"]
+bg_color = Color(1, 0.6, 0.6, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3veb7"]
+bg_color = Color(0.6, 1, 0.6, 1)
+
+[node name="enemy" type="Area2D"]
+script = ExtResource("1_3epn5")
+speed = 3.0
+health = 3.0
+metadata/_custom_type_script = "uid://crvxogcmhm8m5"
+
+[node name="Area2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_rf5tu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_ait0i")
+
+[node name="ProgressBar" type="ProgressBar" parent="." node_paths=PackedStringArray("enemy")]
+z_index = 1
+custom_minimum_size = Vector2(32, 0)
+offset_left = -27.0
+offset_top = -25.17
+offset_right = 27.0
+offset_bottom = -2.17
+theme_override_styles/background = SubResource("StyleBoxFlat_10gli")
+theme_override_styles/fill = SubResource("StyleBoxFlat_3veb7")
+show_percentage = false
+script = ExtResource("3_10gli")
+enemy = NodePath("..")
+metadata/_custom_type_script = "uid://csgaysta4xfn1"

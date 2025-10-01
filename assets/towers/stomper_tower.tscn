@@ -1,19 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://co7642cr31wxw"]
+[gd_scene load_steps=4 format=3 uid="uid://co7642cr31wxw"]
 
 [ext_resource type="Script" uid="uid://bifh5hnf0qxvg" path="res://objects/towers/stomper.gd" id="1_84if6"]
+[ext_resource type="Texture2D" uid="uid://bm58e6ycsov0v" path="res://raw_assets/stomper.png" id="1_ypyp8"]
 [ext_resource type="PackedScene" uid="uid://c84akd6w6fkum" path="res://assets/effects/stomp_effect.tscn" id="2_f8bdw"]
 
-[sub_resource type="Gradient" id="Gradient_84if6"]
-offsets = PackedFloat32Array(0, 0.66, 1)
-colors = PackedColorArray(0, 0, 0, 1, 1, 0.4248601, 0.7087873, 1, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_f8bdw"]
-gradient = SubResource("Gradient_84if6")
-
 [node name="Stomper" type="Sprite2D"]
-texture = SubResource("GradientTexture2D_f8bdw")
+texture = ExtResource("1_ypyp8")
 script = ExtResource("1_84if6")
 stomp_effect = ExtResource("2_f8bdw")
+damage_type = 2
 radius = 64.0
 attackspeed = 1.0
 metadata/_custom_type_script = "uid://bifh5hnf0qxvg"

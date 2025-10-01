@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dd73r40x2p4r4"]
+
+[ext_resource type="Texture2D" uid="uid://dam3m2p84xvhl" path="res://raw_assets/money_farm.png" id="1_ee4re"]
+[ext_resource type="Script" uid="uid://d22sckfdb060i" path="res://objects/towers/farm.gd" id="1_s0qgc"]
+
+[node name="farm" type="Sprite2D"]
+texture = ExtResource("1_ee4re")
+script = ExtResource("1_s0qgc")
+radius = 0.0
+metadata/_custom_type_script = "uid://d22sckfdb060i"

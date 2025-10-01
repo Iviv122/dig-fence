@@ -1,30 +1,5 @@
-extends Tile 
-class_name Tower 
-
-@export var price : int = 100
-@export var radius : float = 5
-@export var bullet_speed : float = 5
-@export var attackspeed : float = 0.1 # seconds for single attack
-@export var damage : float = 1
-
-@export var projectile : PackedScene #not necessary
-
-@export var max_upgrade : int = 1
-var upgrade_num : int = 0
-
-var X :int
-var Y :int
-var field : Field
-
-var summed_price = price
-var reload_time = 0 
-
-signal sold(v : Vector2)
-
-func sell() ->void:
-	sold.emit(Vector2(X,Y))
-	PlayerInstance.add_money(summed_price)
-
+extends Tower 
+class_name Sniper 
 
 func upgrade() -> void:
 	if upgrade_num <= max_upgrade:
@@ -68,11 +43,11 @@ func check() -> void:
 	var n = result.size()
 
 	if n > 0:
-		for i in range(0,3):
-			
-			var collider = result.pick_random().collider
+		var collider = result[0].collider
 
-			shoot(collider)
+		var direction = (collider.global_position - global_position).angle()
+		rotation = lerp_angle(rotation, direction, 0.1)
+		shoot(collider)
 
 func _process(delta):
 	reload_time -= delta*attackspeed
