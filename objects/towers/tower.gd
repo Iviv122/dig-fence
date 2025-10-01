@@ -38,7 +38,7 @@ func shoot(target : Enemy)->void:
 		var p : SimpleBullet = projectile.instantiate()
 		
 		p.global_position = global_position
-		p.init(radius,damage,bullet_speed,target)
+		p.init(damage,bullet_speed,target)
 
 		get_parent().add_child(p)
 		reload_time = 1 
