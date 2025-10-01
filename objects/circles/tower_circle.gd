@@ -14,10 +14,11 @@ func sell():
 		queue_free()
 
 func upgrade():
-	if !used:
-		tower.upgrade()
-		used = true
-		queue_free()
+	if PlayerInstance.money >= tower.price:
+		if !used:
+			tower.upgrade()
+			used = true
+			queue_free()
 
 func _draw():
 	draw_circle(Vector2.ZERO, tower.radius, Color(0.2, 0.8, 1.0, 0.3)) # Light blue, semi-transparent
